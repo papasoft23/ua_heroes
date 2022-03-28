@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Provider } from 'react-redux'
+import { enableScreens } from 'react-native-screens';
+import configureStore from './src/redux/store'
+import { initialiseApplication } from './src/redux/actions/application.actions'
+import Navigation from './src/components/navigation/starterNavigation'
+
+enableScreens();
+
+const store = configureStore()
+store.dispatch(initialiseApplication())
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello, future hero!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <Provider store={store}>
+            <Navigation />
+        </Provider>
+    )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f7f7f7',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

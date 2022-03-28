@@ -5,3 +5,4 @@ export const initialiseApplication = () => ({
     type: INIT_APPLICATION,
     payload: {},
 })
+
